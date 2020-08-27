@@ -23,13 +23,20 @@ namespace Tabterm {
 		Gtk.Stack terminals;
 		[GtkChild]
 		Gtk.Button addTerminal;
+		[GtkChild]
+		Gtk.Button rmTerminal;
 
 		int curTerm = 0;
 
 		public Window (Gtk.Application app) {
 			Object (application: app);
 			addTerminal.clicked.connect(newTerminal);
+			rmTerminal.clicked.connect(remTerminal);
 			terminals.set_transition_type(Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
+		}
+
+		public void remTerminal() {
+			terminals.remove(terminals.get_visible_child());
 		}
 
 		public void newTerminal() {
