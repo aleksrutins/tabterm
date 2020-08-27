@@ -16,3 +16,5 @@ There should now be a `tabterm` entry in your app menu. If there is not, run:
 ```sh
 $ sudo desktop-file-install tabterm.desktop
 ```
+### Why __another__ terminal for Linux?
+I wanted a GTK-based terminal with tabs in the titlebar, so as to use the space well, and I couldn't find one, so I made one.
