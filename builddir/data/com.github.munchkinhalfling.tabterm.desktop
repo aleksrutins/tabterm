@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=tabterm
-Exec=tabterm
-Icon=utilities-terminal
-Terminal=false
-Type=Application
-Categories=GTK;
-StartupNotify=true
