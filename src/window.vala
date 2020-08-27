@@ -61,6 +61,9 @@ namespace Tabterm {
             stdout.printf("New terminal: " + curTerm.to_string() + "\n");
 			show_all();
 			terminals.set_visible_child_full("term" + curTerm.to_string(), CROSSFADE);
+			term.window_title_changed.connect(() => {
+				terminals.child_set_property(term, "title", term.window_title);
+			});
             curTerm++;
 		}
 	}
