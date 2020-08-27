@@ -57,9 +57,10 @@ namespace Tabterm {
 
 			}
 			string title = term.get_window_title() != null && term.window_title != "" ? term.window_title : command;
-            terminals.add_titled(term, "term" + curTerm.to_string(), title);
+			terminals.add_titled(term, "term" + curTerm.to_string(), title);
             stdout.printf("New terminal: " + curTerm.to_string() + "\n");
-            show_all();
+			show_all();
+			terminals.set_visible_child_full("term" + curTerm.to_string(), CROSSFADE);
             curTerm++;
 		}
 	}
