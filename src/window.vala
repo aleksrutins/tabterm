@@ -55,8 +55,9 @@ namespace Tabterm {
 		    } catch (GLib.Error e) {
 			    stderr.printf ("Error: %s\n", e.message);
 
-		    }
-            terminals.add_titled(term, "term" + curTerm.to_string(), "Terminal " + curTerm.to_string());
+			}
+			string title = term.get_window_title() != null && term.window_title != "" ? term.window_title : command;
+            terminals.add_titled(term, "term" + curTerm.to_string(), title);
             stdout.printf("New terminal: " + curTerm.to_string() + "\n");
             show_all();
             curTerm++;
