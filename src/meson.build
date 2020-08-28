@@ -1,12 +1,14 @@
 tabterm_sources = [
   'main.vala',
   'window.vala',
+  'terminal.vala'
 ]
 
 tabterm_deps = [
   dependency('gio-2.0', version: '>= 2.50'),
   dependency('gtk+-3.0', version: '>= 3.22'),
-  dependency('vte-2.91')
+  dependency('vte-2.91'),
+  meson.get_compiler('vala').find_library('posix')
 ]
 
 gnome = import('gnome')

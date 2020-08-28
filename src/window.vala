@@ -26,39 +26,33 @@ namespace Tabterm {
 		[GtkChild]
 		Gtk.Button rmTerminal;
 
-		int curTerm = 0;
+		private int curTerm = 0;
 
 		public Window (Gtk.Application app) {
 			Object (application: app);
 			addTerminal.clicked.connect(newTerminal);
 			rmTerminal.clicked.connect(remTerminal);
 			terminals.set_transition_type(Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
+			newTerminal();
 		}
 
 		public void remTerminal() {
-			terminals.remove(terminals.get_visible_child());
+			AppTerminal term = (AppTerminal)terminals.get_visible_child();
+			List<weak Gtk.Widget> childList = terminals.get_children();
+			int newIndex = childList.index(term) - 1;
+			terminals.set_visible_child_full("term" + newIndex.to_string(), CROSSFADE);
+			Posix.kill(term.pid(), 1);
+			terminals.remove(term);
+			if(terminals.get_children().length() == 0) {
+				Process.exit(0);
+			}
 		}
 
 		public void newTerminal() {
-            var term = new Vte.Terminal();
-            var command = GLib.Environment.get_variable ("SHELL");
-		    try {
-			    term.spawn_sync (
-				    Vte.PtyFlags.DEFAULT,
-				    GLib.Environment.get_variable("HOME"),
-				    new string[] { command }, /* command */
-				    null,    /* additional environment */
-				    0,       /* spawn flags */
-				    null,    /* child setup */
-				    null     /* child pid */
-				    );
-		    } catch (GLib.Error e) {
-			    stderr.printf ("Error: %s\n", e.message);
-
-			}
-			string title = term.get_window_title() != null && term.window_title != "" ? term.window_title : command;
+			var term = new AppTerminal();
+			term.spawn();
+			string title = term.get_window_title() != null && term.window_title != "" ? term.window_title : term.command;
 			terminals.add_titled(term, "term" + curTerm.to_string(), title);
-            stdout.printf("New terminal: " + curTerm.to_string() + "\n");
 			show_all();
 			terminals.set_visible_child_full("term" + curTerm.to_string(), CROSSFADE);
 			term.window_title_changed.connect(() => {

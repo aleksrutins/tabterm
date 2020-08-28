@@ -10,7 +10,7 @@
       <object class="GtkStack" id="terminals">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <child>
+        <!-- <child>
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
@@ -21,7 +21,7 @@ Click the + to create a terminal</property>
             <property name="name">page0</property>
             <property name="title" translatable="yes">Welcome</property>
           </packing>
-        </child>
+        </child> -->
       </object>
     </child>
     <child type="titlebar">
@@ -65,7 +65,14 @@ Click the + to create a terminal</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="label">X</property>
+                <property name="always_show_image">True</property>
+                <child>
+                  <object class="GtkImage" id="rmTerminal_img">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="icon_name">window-close-symbolic</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -83,7 +90,7 @@ Click the + to create a terminal</property>
                   <object class="GtkImage" id="addTerminal_img">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="icon_name">gtk-add</property>
+                    <property name="icon_name">list-add-symbolic</property>
                   </object>
                 </child>
               </object>
