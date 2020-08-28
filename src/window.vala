@@ -25,6 +25,10 @@ namespace Tabterm {
 		Gtk.Button addTerminal;
 		[GtkChild]
 		Gtk.Button rmTerminal;
+		[GtkChild]
+		Gtk.Button copyBtn;
+		[GtkChild]
+		Gtk.Button pasteBtn;
 
 		private int curTerm = 0;
 
@@ -32,8 +36,22 @@ namespace Tabterm {
 			Object (application: app);
 			addTerminal.clicked.connect(newTerminal);
 			rmTerminal.clicked.connect(remTerminal);
+			copyBtn.clicked.connect(copy);
+			pasteBtn.clicked.connect(paste);
 			terminals.set_transition_type(Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
 			newTerminal();
+		}
+
+		public void copy() {
+			((AppTerminal)terminals.get_visible_child()).copy_primary();
+			var clip = Gtk.Clipboard.get_default(Gdk.Display.get_default());
+			var primClip = Gtk.Clipboard.@get(Gdk.SELECTION_PRIMARY);
+			var primText = primClip.wait_for_text();
+			clip.set_text(primText, primText.length);
+		}
+		public void paste() {
+			var clip = Gtk.Clipboard.get_default(Gdk.Display.get_default());
+			((AppTerminal)terminals.get_visible_child()).feed_child((uint8[])clip.wait_for_text());
 		}
 
 		public void remTerminal() {

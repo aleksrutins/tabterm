@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="tabterm">
 	<schema id="com.github.munchkinhalfling.tabterm" path="/com/github/munchkinhalfling/tabterm/">
+		<key name="font" type="s">
+			<default l10n="messages">"Cousine Regular 10"</default>
+			<summary>Font</summary>
+			<description>Font to use in terminals</description>
+		</key>
+		<key name="background" type="s">
+			<default l10n="messages">"rgb(255,255,230)"</default>
+			<summary>Background color</summary>
+			<description>Background color for terminals, in rgb(r,g,b) form</description>
+		</key>
+		<key name="foreground" type="s">
+			<default l10n="messages">"rgb(0,0,0)"</default>
+			<summary>Foreground color</summary>
+			<description>Foreground color for terminals, in rgb(r,g,b) form</description>
+		</key>
 	</schema>
 </schemalist>
