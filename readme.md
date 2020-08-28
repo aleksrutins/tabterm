@@ -5,7 +5,7 @@
 - Vala
 - gio-2.0 >= 2.50
 - gtk+-3.0 >= 3.22
-- libvte
+- vte-2.91
 #### Building
 ```sh
 $ meson builddir
