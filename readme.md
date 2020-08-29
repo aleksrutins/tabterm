@@ -15,5 +15,7 @@ $ sudo ninja -C builddir install
 There should now be a `tabterm` entry in your app menu.
 ### Configuration
 All configuration entries are documented in GSettings under /com/github/munchkinhalfling/tabterm (com.github.munchkinhalfling.tabterm on the command line)
+### Screenshot
+![Screenshot](screenshot.png)
 ### Why __another__ terminal for Linux?
 I wanted a GTK-based terminal with tabs in the titlebar, so as to use the space well, and I couldn't find one, so I made one.
