@@ -18,7 +18,11 @@
 
 int main (string[] args) {
 	var app = new Gtk.Application ("com.github.munchkinhalfling.tabterm", ApplicationFlags.FLAGS_NONE);
+
 	app.activate.connect (() => {
+		var cssProv = new Gtk.CssProvider();
+		cssProv.load_from_resource("/com/github/munchkinhalfling/tabterm/app.css");
+		Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(), cssProv, Gtk.STYLE_PROVIDER_PRIORITY_USER);
 		var win = app.active_window;
 		if (win == null) {
 			win = new Tabterm.Window (app);

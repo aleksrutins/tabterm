@@ -2,5 +2,6 @@
 <gresources>
   <gresource prefix="/com/github/munchkinhalfling/tabterm">
     <file>window.ui</file>
+    <file>app.css</file>
   </gresource>
 </gresources>

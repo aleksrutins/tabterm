@@ -1,0 +1,22 @@
+/*
+You can type here any CSS rule recognized by GTK+.
+You can temporarily disable this custom CSS by clicking on the “Pause” button above.
+
+Changes are applied instantly and globally, for the whole application.
+*/
+
+.stack-switcher > .radio {
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	margin-bottom: 0;
+	margin-right: 10px;
+}
+
+.stack-switcher > .radio:checked {
+	border: none;
+	border-top: 3px solid @accent_color;
+	border-left: 1px solid @fg_color;
+	border-right: 1px solid @fg_color;
+}
