@@ -12,11 +12,18 @@ Changes are applied instantly and globally, for the whole application.
 	border-bottom-right-radius: 0px;
 	margin-bottom: 0;
 	margin-right: 10px;
-  border: none
+  border: none;
 }
 
 .stack-switcher > .radio:checked {
+    border: none;
 	border-top: 3px solid @accent_color;
 	border-left: 1px solid @fg_color;
 	border-right: 1px solid @fg_color;
+}
+
+.stack-switcher > .radio:active {
+    border-top: 1px solid @fg_color;
+    border-left: 1px solid @fg_color;
+    border-right: 1px solid @fg_color;
 }
